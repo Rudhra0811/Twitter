@@ -1,7 +1,8 @@
-let users = [
+// File: src/api/users.js (updated)
+export let users = [
     { id: 1, username: 'demo', name: 'Demo User', bio: 'This is a demo account', profileImage: 'https://via.placeholder.com/150', following: [] },
     { id: 2, username: 'jane', name: 'Jane Doe', bio: 'Hello, I\'m Jane!', profileImage: 'https://via.placeholder.com/150', following: [] }
-];
+  ];
 
 export const fetchUserProfile = async (username) => {
     return new Promise((resolve, reject) => {

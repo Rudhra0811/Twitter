@@ -1,0 +1,14 @@
+.search-results {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.search-results h2 {
+    margin-bottom: 1rem;
+}
+
+.search-results h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}

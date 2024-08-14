@@ -7,6 +7,8 @@ import Home from './components/Home';
 import Profile from './components/Profile';
 import Login from './components/Login';
 import Register from './components/Register';
+// import Notifications from './components/Notifications';
+import SearchResults from './components/SearchResults';
 import './App.css';
 
 function PrivateRoute({ children }) {
@@ -25,6 +27,8 @@ function App() {
             <Route path="/profile/:username" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            {/* <Route path="/notifications" element={<PrivateRoute><Notifications /></PrivateRoute>} /> */}
+            <Route path="/search" element={<SearchResults />} />
           </Routes>
         </div>
       </Router>

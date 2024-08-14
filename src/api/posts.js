@@ -1,5 +1,4 @@
-// File: src/api/posts.js (updated)
-let posts = [
+export let posts = [
     { id: 1, content: "Hello, Twitter clone!", author: "demo", timestamp: new Date().toISOString(), likes: [], comments: [] },
     { id: 2, content: "This is a test post.", author: "demo", timestamp: new Date().toISOString(), likes: [], comments: [] }
 ];
