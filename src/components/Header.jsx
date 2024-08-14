@@ -16,7 +16,7 @@ function Header() {
                     <li><Link to="/">Home</Link></li>
                     {user ? (
                         <>
-                            <li><Link to="/profile">Profile</Link></li>
+                            <li><Link to={`/profile/${user.username}`}>Profile</Link></li>
                             <li><button onClick={logout}>Logout</button></li>
                         </>
                     ) : (
