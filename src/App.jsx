@@ -22,14 +22,16 @@ function App() {
       <Router>
         <div className="App">
           <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile/:username" element={<Profile />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            {/* <Route path="/notifications" element={<PrivateRoute><Notifications /></PrivateRoute>} /> */}
-            <Route path="/search" element={<SearchResults />} />
-          </Routes>
+          <main className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile/:username" element={<Profile />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              {/* <Route path="/notifications" element={<PrivateRoute><Notifications /></PrivateRoute>} /> */}
+              <Route path="/search" element={<SearchResults />} />
+            </Routes>
+          </main>
         </div>
       </Router>
     </AuthProvider>

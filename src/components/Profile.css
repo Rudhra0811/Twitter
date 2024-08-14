@@ -31,11 +31,13 @@
     width: 100%;
     margin-bottom: 1rem;
     padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
 }
 
 .profile-edit button,
 .profile-info button {
-    background-color: #1da1f2;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -48,10 +50,18 @@
     margin-bottom: 1rem;
 }
 
-.profile-info button:hover {
-    background-color: #1991db;
-}
+@media (max-width: 480px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
 
-.profile-info button:active {
-    background-color: #1777b6;
+    .profile-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .profile-info button {
+        margin-top: 1rem;
+    }
 }
