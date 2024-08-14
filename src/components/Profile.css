@@ -47,3 +47,11 @@
 .profile-posts h2 {
     margin-bottom: 1rem;
 }
+
+.profile-info button:hover {
+    background-color: #1991db;
+}
+
+.profile-info button:active {
+    background-color: #1777b6;
+}

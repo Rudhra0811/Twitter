@@ -1,14 +1,14 @@
 let users = [
-    { id: 1, username: 'demo', name: 'Demo User', bio: 'This is a demo account', profileImage: 'https://via.placeholder.com/150' },
-    { id: 2, username: 'musk', name: 'Elon musk', bio: 'Hello, I\'m Musk!', profileImage: 'https://via.placeholder.com/150' } 
-  ];
+    { id: 1, username: 'demo', name: 'Demo User', bio: 'This is a demo account', profileImage: 'https://via.placeholder.com/150', following: [] },
+    { id: 2, username: 'jane', name: 'Jane Doe', bio: 'Hello, I\'m Jane!', profileImage: 'https://via.placeholder.com/150', following: [] }
+];
 
 export const fetchUserProfile = async (username) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const user = users.find(u => u.username === username);
             if (user) {
-                resolve({ ...user });
+                resolve({ ...user, followersCount: users.filter(u => u.following.includes(user.id)).length });
             } else {
                 reject(new Error('User not found'));
             }
@@ -23,6 +23,52 @@ export const updateUserProfile = async (username, updates) => {
             if (index !== -1) {
                 users[index] = { ...users[index], ...updates };
                 resolve({ ...users[index] });
+            } else {
+                reject(new Error('User not found'));
+            }
+        }, 500);
+    });
+};
+
+export const followUser = async (currentUsername, targetUsername) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const currentUser = users.find(u => u.username === currentUsername);
+            const targetUser = users.find(u => u.username === targetUsername);
+            if (currentUser && targetUser) {
+                if (!currentUser.following.includes(targetUser.id)) {
+                    currentUser.following.push(targetUser.id);
+                }
+                resolve({ success: true });
+            } else {
+                reject(new Error('User not found'));
+            }
+        }, 500);
+    });
+};
+
+export const unfollowUser = async (currentUsername, targetUsername) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const currentUser = users.find(u => u.username === currentUsername);
+            const targetUser = users.find(u => u.username === targetUsername);
+            if (currentUser && targetUser) {
+                currentUser.following = currentUser.following.filter(id => id !== targetUser.id);
+                resolve({ success: true });
+            } else {
+                reject(new Error('User not found'));
+            }
+        }, 500);
+    });
+};
+
+export const checkFollowStatus = async (currentUsername, targetUsername) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const currentUser = users.find(u => u.username === currentUsername);
+            const targetUser = users.find(u => u.username === targetUsername);
+            if (currentUser && targetUser) {
+                resolve(currentUser.following.includes(targetUser.id));
             } else {
                 reject(new Error('User not found'));
             }

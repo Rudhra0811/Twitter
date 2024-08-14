@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { fetchUserProfile, updateUserProfile } from '../api/users';
+import { fetchUserProfile, updateUserProfile, followUser, unfollowUser, checkFollowStatus } from '../api/users';
 import { fetchUserPosts } from '../api/posts';
 import PostList from './PostList';
 import './Profile.css';
@@ -14,10 +14,19 @@ function Profile() {
     const [isEditing, setIsEditing] = useState(false);
     const [editedProfile, setEditedProfile] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [isFollowing, setIsFollowing] = useState(false);
 
     useEffect(() => {
         loadProfileAndPosts();
     }, [username]);
+
+    useEffect(() => {
+        if (currentUser && profile && currentUser.username !== profile.username) {
+            checkFollowStatus(currentUser.username, profile.username)
+                .then(status => setIsFollowing(status))
+                .catch(error => console.error('Failed to check follow status:', error));
+        }
+    }, [currentUser, profile]);
 
     const loadProfileAndPosts = async () => {
         setIsLoading(true);
@@ -59,6 +68,28 @@ function Profile() {
         setEditedProfile({ ...editedProfile, [e.target.name]: e.target.value });
     };
 
+    const handleFollow = async () => {
+        if (!currentUser) return;
+        try {
+            await followUser(currentUser.username, profile.username);
+            setIsFollowing(true);
+            setProfile(prev => ({ ...prev, followersCount: prev.followersCount + 1 }));
+        } catch (error) {
+            console.error('Failed to follow user:', error);
+        }
+    };
+
+    const handleUnfollow = async () => {
+        if (!currentUser) return;
+        try {
+            await unfollowUser(currentUser.username, profile.username);
+            setIsFollowing(false);
+            setProfile(prev => ({ ...prev, followersCount: prev.followersCount - 1 }));
+        } catch (error) {
+            console.error('Failed to unfollow user:', error);
+        }
+    };
+
     if (isLoading) {
         return <div>Loading profile...</div>;
     }
@@ -92,9 +123,16 @@ function Profile() {
                         <h1>{profile.name}</h1>
                         <p>@{profile.username}</p>
                         <p>{profile.bio}</p>
-                        {currentUser && currentUser.username === username && (
+                        <p>Followers: {profile.followersCount}</p>
+                        {currentUser && currentUser.username === username ? (
                             <button onClick={handleEdit}>Edit Profile</button>
-                        )}
+                        ) : currentUser ? (
+                            isFollowing ? (
+                                <button onClick={handleUnfollow}>Unfollow</button>
+                            ) : (
+                                <button onClick={handleFollow}>Follow</button>
+                            )
+                        ) : null}
                     </div>
                 )}
             </div>

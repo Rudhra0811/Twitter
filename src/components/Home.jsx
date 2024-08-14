@@ -18,7 +18,15 @@ function Home() {
         setIsLoading(true);
         try {
             const fetchedPosts = await fetchPosts();
-            setPosts(fetchedPosts);
+            // If user is logged in, filter posts to show only from followed users and the user themselves
+            if (user) {
+                const filteredPosts = fetchedPosts.filter(post =>
+                    post.author === user.username || user.following.includes(post.authorId)
+                );
+                setPosts(filteredPosts);
+            } else {
+                setPosts(fetchedPosts);
+            }
         } catch (error) {
             console.error('Failed to fetch posts:', error);
         } finally {
