@@ -1,0 +1,25 @@
+.register {
+    max-width: 300px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.register form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+.register button {
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
