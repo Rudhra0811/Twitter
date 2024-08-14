@@ -1,7 +1,7 @@
 // File: src/api/users.js (updated)
 export let users = [
-    { id: 1, username: 'demo', name: 'Demo User', bio: 'This is a demo account', profileImage: 'https://via.placeholder.com/150', following: [] },
-    { id: 2, username: 'jane', name: 'Jane Doe', bio: 'Hello, I\'m Jane!', profileImage: 'https://via.placeholder.com/150', following: [] }
+    { id: 1, username: 'demo', name: 'Demo User', bio: 'This is a demo account', profileImage: '/profile1.jpeg', following: [] },
+    { id: 2, username: 'zoro', name: 'zoro', bio: 'Zoro Desu!!!', profileImage: '/profile1.jpeg', following: [] }
   ];
 
 export const fetchUserProfile = async (username) => {

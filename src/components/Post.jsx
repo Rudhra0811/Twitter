@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { likePost, unlikePost, addComment } from '../api/posts';
+import { createNotification } from '../api/notifications';
 import './Post.css';
 
 function Post({ post, onUpdate }) {
@@ -16,6 +17,9 @@ function Post({ post, onUpdate }) {
                 : await likePost(post.id, user.username);
             setIsLiked(!isLiked);
             onUpdate(updatedPost);
+            if (!isLiked) {
+                await createNotification('like', post.author, user.username, post.id);
+            }
         } catch (error) {
             console.error('Failed to like/unlike post:', error);
         }
@@ -28,6 +32,7 @@ function Post({ post, onUpdate }) {
             const updatedPost = await addComment(post.id, user.username, comment);
             setComment('');
             onUpdate(updatedPost);
+            await createNotification('comment', post.author, user.username, post.id);
         } catch (error) {
             console.error('Failed to add comment:', error);
         }
@@ -35,14 +40,24 @@ function Post({ post, onUpdate }) {
 
     return (
         <div className="post">
-            <p className="post-author">{post.author}</p>
+            <div className="post-header">
+                <img src={`/profile1.jpeg`} alt={post.author} className="post-avatar" />
+                <div className="post-user-info">
+                    <span className="post-author">{post.author}</span>
+                    <span className="post-username">@{post.author}</span>
+                </div>
+            </div>
             <p className="post-content">{post.content}</p>
             <p className="post-timestamp">{new Date(post.timestamp).toLocaleString()}</p>
             <div className="post-actions">
-                <button onClick={handleLike} className={isLiked ? 'liked' : ''}>
-                    {isLiked ? 'Unlike' : 'Like'} ({post.likes.length})
-                </button>
-                <span>{post.comments.length} Comments</span>
+                <div className={`post-action ${isLiked ? 'liked' : ''}`} onClick={handleLike}>
+                    <span className="post-action-icon">❤️</span>
+                    <span>{post.likes.length}</span>
+                </div>
+                <div className="post-action">
+                    <span className="post-action-icon">💬</span>
+                    <span>{post.comments.length}</span>
+                </div>
             </div>
             {user && (
                 <form onSubmit={handleComment} className="comment-form">

@@ -4,6 +4,9 @@ export const loginUser = async (username, password) => {
         setTimeout(() => {
             if (username === 'demo' && password === 'password') {
                 resolve({ id: 1, username: 'demo', name: 'Demo User' });
+            }
+            else if (username === 'zoro' && password === 'password') {
+                resolve({ id: 2, username: 'zoro', name: 'zoro' });
             } else {
                 reject(new Error('Invalid credentials'));
             }
