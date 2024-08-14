@@ -44,6 +44,10 @@ function Home() {
         }
     };
 
+    const handleUpdatePost = (updatedPost) => {
+        setPosts(posts.map(post => post.id === updatedPost.id ? updatedPost : post));
+    };
+
     return (
         <div className="home">
             <h1>Home</h1>
@@ -51,7 +55,7 @@ function Home() {
             {isLoading ? (
                 <p>Loading posts...</p>
             ) : (
-                <PostList posts={posts} />
+                <PostList posts={posts} onUpdatePost={handleUpdatePost} />
             )}
         </div>
     );

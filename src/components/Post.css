@@ -1,0 +1,86 @@
+.post {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post-author {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.post-content {
+    margin-bottom: 0.5rem;
+}
+
+.post-timestamp {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.post-actions button {
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.post-actions button.liked {
+    background-color: #17bf63;
+}
+
+.comment-form {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.comment-form input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.comment-form button {
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.comments {
+    margin-top: 1rem;
+}
+
+.comment {
+    border-top: 1px solid #eee;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.comment-author {
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+.comment-content {
+    margin-bottom: 0.2rem;
+}
+
+.comment-timestamp {
+    font-size: 0.7rem;
+    color: #666;
+}
