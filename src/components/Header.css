@@ -4,6 +4,7 @@
     position: sticky;
     top: 0;
     z-index: 1000;
+    padding: 10px 0;
 }
 
 .header-content {
@@ -11,6 +12,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 0;
+    padding: 0.5rem 15px;
 }
 
 .header-logo a {
@@ -22,6 +24,8 @@
 .header-nav ul {
     list-style-type: none;
     display: flex;
+    align-items: center;
+    margin: 0;
 }
 
 .header-nav ul li {
@@ -33,12 +37,15 @@
     color: var(--text-color);
     font-weight: bold;
     transition: color 0.2s ease;
+    padding: 8px 12px;
+    border-radius: 20px;
 }
 
 .header-nav ul li a:hover,
 .header-nav ul li button:hover {
     color: var(--primary-color);
     text-decoration: none;
+    background-color: var(--hover-color);
 }
 
 .menu-toggle {
