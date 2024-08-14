@@ -1,40 +1,44 @@
 .header {
     background-color: var(--background-color);
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0.5rem 0;
 }
 
 .header-logo a {
     color: var(--primary-color);
     font-size: 1.5rem;
-    text-decoration: none;
     font-weight: bold;
 }
 
 .header-nav ul {
     list-style-type: none;
-    padding: 0;
     display: flex;
 }
 
 .header-nav ul li {
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 }
 
 .header-nav ul li a,
 .header-nav ul li button {
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.header-nav ul li a:hover,
+.header-nav ul li button:hover {
     color: var(--primary-color);
     text-decoration: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
 }
 
 .menu-toggle {
@@ -68,31 +72,7 @@
         display: block;
         background: none;
         border: none;
-        cursor: pointer;
-    }
-
-    .menu-toggle-icon {
-        display: block;
-        width: 25px;
-        height: 3px;
-        background-color: var(--primary-color);
-        position: relative;
-    }
-
-    .menu-toggle-icon::before,
-    .menu-toggle-icon::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: var(--primary-color);
-    }
-
-    .menu-toggle-icon::before {
-        top: -8px;
-    }
-
-    .menu-toggle-icon::after {
-        bottom: -8px;
+        color: var(--primary-color);
+        font-size: 1.5rem;
     }
 }

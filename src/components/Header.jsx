@@ -16,7 +16,7 @@ function Header() {
         <header className="header">
             <div className="container header-content">
                 <div className="header-logo">
-                    <Link to="/">TwitterClone</Link>
+                    <Link to="/">Twitter</Link>
                 </div>
                 <SearchBar />
                 <nav className={`header-nav ${isMenuOpen ? 'open' : ''}`}>

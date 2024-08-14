@@ -1,43 +1,56 @@
 .post {
+    background-color: var(--background-color);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 1rem;
     margin-bottom: 1rem;
-    background-color: var(--background-color);
+    transition: background-color 0.2s ease;
+}
+
+.post:hover {
+    background-color: var(--hover-color);
 }
 
 .post-author {
     font-weight: bold;
     margin-bottom: 0.5rem;
+    color: var(--text-color);
 }
 
 .post-content {
     margin-bottom: 0.5rem;
+    word-wrap: break-word;
 }
 
 .post-timestamp {
-    font-size: 0.8rem;
-    color: #657786;
+    font-size: 0.85rem;
+    color: var(--text-color-secondary);
     margin-bottom: 0.5rem;
 }
 
 .post-actions {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+    justify-content: space-around;
+    margin: 1rem 0;
 }
 
 .post-actions button {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: transparent;
+    color: var(--text-color-secondary);
     border: none;
-    padding: 0.3rem 0.7rem;
-    border-radius: 15px;
-    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.post-actions button:hover {
+    background-color: var(--hover-color);
+    color: var(--primary-color);
 }
 
 .post-actions button.liked {
-    background-color: #17bf63;
+    color: var(--primary-color);
 }
 
 .comment-form {
@@ -47,9 +60,10 @@
 
 .comment-form input {
     flex-grow: 1;
-    padding: 0.5rem;
+    padding: 0.75rem;
     border: 1px solid var(--border-color);
-    border-radius: 3px;
+    border-radius: 20px;
+    font-size: 1rem;
 }
 
 .comment-form button {
@@ -57,9 +71,13 @@
     color: white;
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 3px;
-    cursor: pointer;
+    border-radius: 20px;
     margin-left: 0.5rem;
+    font-weight: bold;
+}
+
+.comment-form button:hover {
+    background-color: var(--button-hover);
 }
 
 .comments {
@@ -74,37 +92,14 @@
 
 .comment-author {
     font-weight: bold;
-    margin-bottom: 0.2rem;
+    color: var(--text-color);
 }
 
 .comment-content {
-    margin-bottom: 0.2rem;
+    margin: 0.25rem 0;
 }
 
 .comment-timestamp {
-    font-size: 0.7rem;
-    color: #657786;
-}
-
-@media (max-width: 480px) {
-    .post-actions {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .post-actions button {
-        margin-bottom: 0.5rem;
-    }
-
-    .comment-form {
-        flex-direction: column;
-    }
-
-    .comment-form input {
-        margin-bottom: 0.5rem;
-    }
-
-    .comment-form button {
-        margin-left: 0;
-    }
+    font-size: 0.75rem;
+    color: var(--text-color-secondary);
 }
